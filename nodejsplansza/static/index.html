@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>html</title>
+	<meta charset="utf-8" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="libs/jquery-3.1.1.min.js"></script>
+    <script src="libs/three.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Net.js"></script>
+    <script src="js/Ui.js"></script>
+    <script>
+        var game;
+        var net;
+        var ui;
+        var player = 0;
+        var gamestatus = 0;
+        window.addEventListener("load", function () {
+            game = new Game()
+            net = new Net();
+            ui = new Ui();
+        })
+    </script>
+</head>
+<body>
+    <div id="main1"></div>
+    <div id="tab"></div>
+    <input type="button" value="ustaw" id="bt1" />
+    <div id="loginsc">     
+        <div id="sc1"> 
+            <form>
+                <h1>LOGOWANIE</h1>
+                <input type="text" value="aaa" id="txt1" />
+                <input type="button" value="LOGUJ" id="bt2" />
+                <input type="button" value="RESET" id="bt3" />
+            </form>
+        </div>
+        <div id="sc2">
+            <h1 id="sc2txt">Czekaj na drugiego gracza...</h1>
+            <h1 id="clock"></h1>
+        </div>       
+    </div>
+    <div id="st1">
+        <h1 id="hh1">Status</h1>
+    </div>   
+</body>
+</html>
