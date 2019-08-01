@@ -1,0 +1,1276 @@
+<!Doctype html>
+<html>
+<head>
+	<title>Obrazek</title>
+    <meta charset="utf-8" />
+    <style>
+       body
+        {
+            margin: 0auto;
+            background-image:url(back.jpg);
+            
+        }
+        .pusty
+        {
+    text-align: center;
+            color:blue;
+            
+        }
+        .myButton {
+	-moz-box-shadow: -12px 10px 9px -1px #276873;
+	-webkit-box-shadow: -12px 10px 9px -1px #276873;
+	box-shadow: -12px 10px 9px -1px dimgrey;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+	background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+	background-color:#599bb3;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+        
+	font-family:Courier New;
+	font-size:28px;
+	font-weight:bold;
+	font-style:italic;
+	padding:16px 42px;
+	text-decoration:none;
+	text-shadow:-7px 8px 2px #3d768a;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
+	background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+        
+        .obrazek{
+        position: absolute;
+        left: calc(50% - 150px);
+    
+        }
+        #obrazek2{
+        position: absolute;
+        left: calc(50% - 350px);
+           top:120px;
+           
+        
+        }
+        #obrazek3{
+        position: absolute;
+        left: calc(50% + 200px);
+            top:120px;
+
+        }
+        .but{
+        position: relative;
+        margin:5px;
+        margin-top: 310px;
+        width: 50px;
+         
+        }
+        #bt3{
+        margin-left: calc(50% - 115px);
+        }
+        #pole{
+        width: 300px;
+        height: 300px;
+      
+            clear: both;
+        }
+           #pole2{
+        width: 160px;
+        height: 20px;
+      position: absolute;
+             margin-left:  calc(50% - 90px);
+               margin-top: 20px;
+            clear: both;
+        }
+        
+        #pole{
+        margin-left: calc(50% - 150px);
+            margin-top: 70px;
+        }
+        div{
+        float: left;
+        }
+        .kwadraty{
+            float:left;
+           
+            background-image:no-repeat;
+        }
+        #myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+     
+        #div_zegar {
+				height: 100px;
+				width: 476px;
+				color: lightgrey;
+				background-color: black;
+				border: 3px lightgrey double;
+				border-radius: 10px;
+
+			}
+			
+			#div_zegar h1 {
+				font-size: 20px;
+				text-align: center;
+				margin-bottom: 0;
+			}
+			
+			#div_zegar img {
+				height:42px;
+				width:32px;
+			}
+			
+        
+		
+        #win
+        {
+            color:white;
+            position: absolute;
+            left:15px;
+            bottom: 15px;
+            text-align: center;
+            padding-top:5px;
+        }
+        .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+
+
+
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+        #aaaa{
+            z-index: 100000;
+        }
+        .overlay{
+            COLOR:white;
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>
+    
+	<script>
+var zegg = 0;        
+var o=0;        
+var i=0;
+var a;
+        var n;
+	var Tablica = []
+    var Tablica2 = []
+    var zdjecie;
+        var Tablica3 = [];
+        
+        var niecofaj;
+        var zdj2=1;
+		window.onload=function(){
+            
+            
+        //    <div id="myNav" class="overlay">
+       //             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      //              <div class="overlay-content">
+  //
+   //             </div>
+  //          </div>
+                    
+                    var overlay = document.createElement("div")
+                    overlay.id="myNav"
+                    overlay.innerHTML = "ZWYCIĘSTWO!!!"
+                    overlay.className="overlay"
+             document.body.appendChild(overlay) 
+             
+             
+           
+          
+            var obrazek222 = document.createElement("div")
+            obrazek222.style.backgroundColor="black"
+            obrazek222.id="win"
+            obrazek222.style.width=100+"px"
+            obrazek222.style.height=40+"px"
+            obrazek222.onclick=openNav
+            document.body.appendChild(obrazek222) 
+            obrazek222.innerHTML = "Instant Win"
+            
+            
+           
+            
+            var obrazek= document.createElement("img")
+            obrazek.src="img.png"
+            obrazek.width="300"
+            obrazek.height="300"
+            obrazek.className="obrazek"
+            
+            document.body.appendChild(obrazek) 
+            
+            
+            
+           var obrazek2= document.createElement("button")
+            document.body.appendChild(obrazek2) 
+            obrazek2.innerHTML = "<<<"
+             obrazek2.className="myButton"
+             obrazek2.id="obrazek2"
+        
+           obrazek2.onclick=function zdj(){
+          
+    if(zdj2 == 1)
+                   {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img3.jpg"
+               document.body.appendChild(obrazek) 
+               zdj2=3
+             
+                   }
+               else if(zdj2 == 2)
+                    {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img.png"
+               document.body.appendChild(obrazek) 
+               zdj2=1
+             
+                   }
+                else
+                    {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img2.jpg"
+               document.body.appendChild(obrazek) 
+               zdj2=2
+               
+                   }
+           
+            
+           }
+            
+    
+           
+           var obrazek3= document.createElement("button")
+             document.body.appendChild(obrazek3) 
+               obrazek3.innerHTML = ">>>"
+                obrazek3.className="myButton"
+                obrazek3.id="obrazek3"
+            obrazek3.onclick=function zdj(){
+        
+            if(zdj2 == 1)
+                   {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img2.jpg"
+               document.body.appendChild(obrazek) 
+               zdj2=2
+             
+                   }
+               else if(zdj2 == 2)
+                    {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img3.jpg"
+               document.body.appendChild(obrazek) 
+               zdj2=3
+             
+                   }
+                else
+                    {
+                document.body.removeChild(obrazek) 
+           obrazek.src="img.png"
+               document.body.appendChild(obrazek) 
+               zdj2=1
+               
+                   }
+                
+                    
+                    
+            }
+          
+            
+            
+            
+            
+            
+
+        
+            
+            for(var i=3;i<7;i++){
+                var przycisk= document.createElement("button")
+                przycisk.id="bt"+i
+                var j=document.createTextNode(i+"x"+i);
+                przycisk.appendChild(j)
+                przycisk.className="but"
+               
+               
+                przycisk.onclick=cut
+                document.body.appendChild(przycisk)
+            }
+         
+            var gra=document.createElement("div")
+            gra.id="pole"
+            document.body.appendChild(gra)
+                
+         var gra2=document.createElement("div")
+            gra2.id="pole2"
+            document.body.appendChild(gra2)
+                
+        
+        
+        }
+    
+        
+        function cut(){
+            
+      zegg = 0;
+            
+             
+		var obrazek
+        
+        if(o == 1)
+        {
+           
+            var list = document.getElementById("pole2");
+            list.removeChild(list.childNodes[0]); 
+        }
+            o=1;
+           
+   
+      
+                    
+        
+       
+						
+						var zegar = document.createElement("div");
+            zegar.id="staryzegar"
+						
+						var czas = "hh:mm:ss.ms.";
+						//zegar
+						
+						fZegar = function() {
+							zegar.innerHTML = "";
+							hh = Number(hh);
+							mm = Number(mm);
+							ss = Number(ss);
+							ms = Number(ms);
+						if (zegg == 0){
+							ms=ms+4;
+                        }
+							
+							if (ms == 100){ ss++; ms = 0;}
+							if (ss == 60){ mm++; ss = 0;}
+							if (mm == 60){ hh++; mm = 0;}
+							
+							if(hh < 10){hh = "0"+hh.toString();}
+							if(mm < 10){mm = "0"+mm.toString();}
+							if(ss < 10){ss = "0"+ss.toString();}
+							if(ms < 10){ms = "0"+ms.toString();}
+							
+							czas = hh + ":" + mm + ":" + ss + "." + ms;
+							
+							var tabbb = czas.split("");
+						
+							for (var a = 1; a <= 11; a++){
+								if (a%3 == 0){
+									if(a > 6)
+										zegar.innerHTML += "<img src='gfx/dot.gif'>";
+									else
+										zegar.innerHTML += "<img src='gfx/colon.gif'>";
+								}else{
+									zegar.innerHTML += "<img src='gfx/c"+tabbb[a-1]+".gif'>";
+								}
+							}
+							
+						}
+						
+					
+						
+						var hh = 0, mm = 0, ss = 0, ms = 0;
+						
+						
+						pole2.appendChild(zegar);
+					
+      
+        
+        
+        
+        
+     
+                document.getElementById("pole").innerHTML="";
+                var n = this.id.charAt(2);
+                var nnn = this.id.charAt(2);
+ 
+  
+                Tablica.splice(0,36);
+      
+ 
+                for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+                    var kwadrat=document.createElement("div")   
+                    kwadrat.style.width=300/n+"px"
+                    kwadrat.style.height=300/n+"px"
+                    kwadrat.id="d"+b+k
+                    kwadrat.className="kwadraty"
+                    if(zdj2==1)
+                    {
+                        kwadrat.style.backgroundImage="url('img.png')"
+                    }else if (zdj2 == 2)
+                    {
+                        
+                         kwadrat.style.backgroundImage="url('img2.jpg')"
+                    }else
+                    {
+                         kwadrat.style.backgroundImage="url('img3.jpg')"
+                    }
+					
+					Tablica.push(kwadrat);
+					
+                    kwadrat.style.backgroundPosition=((-k)*(300/n))+"px "+((-b)*(300/n))+"px"
+                  //  kwadrat.onclick=przesuwanie
+                    
+                                    for(var l=0;l<n;l++)
+									{
+									document.getElementById("pole").appendChild(kwadrat)
+                                    }
+                
+               
+                    
+                        if(b==(n-1)&&k==(n-1)){
+                      //  console.log("działa")
+                        kwadrat.style.backgroundImage=""
+                       kwadrat.style.background="rgba(0,0,0,0.4)"
+						kwadrat.className="pusty"
+                        }  
+                   
+                        
+       
+                   kwadrat.onclick=function przesuwanieee(){
+    
+                  
+                 var x = Tablica.indexOf(document.getElementById("d"+(n-1)+(n-1)));
+        var y = Tablica.indexOf(this)   
+        n=parseInt(n);
+                      
+        
+ var ok = true
+for (var i = 0; i < Tablica.length; i++) 
+{
+    if (Tablica[i].id != Tablica2[i].id) {
+        
+       
+          
+        if(x%n==0){
+        if(y==(x+1)||y==(x-n)||y==(x+n))
+         {              
+                     //  console.log(x)
+    if (x > Tablica.indexOf(this)) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = temp;
+	} else {
+		temp = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	 
+		pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+			
+			
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		  
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+	
+		
+		zmienna++;
+	
+	 }
+            
+    }
+                  
+         }
+     }else if(x%n==(n-1)){
+     
+      if(y==(x-n)||y==(x+n)||y==(x-1))
+         {              
+                     //  console.log(x)
+    if (x > Tablica.indexOf(this)) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = temp;
+	} else {
+		temp = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	 
+		pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+			
+			
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		  
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+	
+		
+		zmienna++;
+	
+	 }
+            
+    }
+                 
+         }
+     
+     
+     }else
+        {
+           
+             if(y==(x-n)||y==(x+n)||y==(x+1)||y==(x-1))
+         {              
+                     //  console.log(x)
+    if (x > Tablica.indexOf(this)) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = temp;
+	} else {
+		temp = Tablica[Tablica.indexOf(this)];
+		Tablica[Tablica.indexOf(this)] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	 
+		pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+			
+			
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		  
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+	
+		
+		zmienna++;
+	
+	 }
+            
+    }
+             
+         }
+            
+        }
+    
+                   
+                  
+        //           
+             
+             
+                   
+        
+        
+        ok = false
+        break;
+    }
+}
+   if (ok)   zegg = 1;
+       
+     
+      var ok = true
+for (var i = 0; i < Tablica.length; i++) 
+{
+    if (Tablica[i].id != Tablica2[i].id) {
+        
+       
+          
+      
+             
+                   
+        
+        
+        ok = false
+        break;
+    }
+}
+
+if (ok) {
+     document.getElementById("myNav").style.height = "100%";
+            
+            zegg = 1;
+            
+        setTimeout(closeit,2000)
+        }
+
+
+
+
+ 
+                   
+                   
+                  
+                   
+                   
+                   
+                   
+                   
+                   
+                   //////////////////////////////////////////////////////////////////
+                 //KONIEC PRZESUWANIA  
+                   ///////////////////
+                    
+              
+         
+                    
+                     
+                    
+                   }
+                   
+                 
+                   
+                    }   
+					
+            }  
+            
+            
+          
+                 for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+                    var kwadrat=document.createElement("div")   
+                    kwadrat.style.width=300/n+"px"
+                    kwadrat.style.height=300/n+"px"
+                    kwadrat.id="d"+b+k
+                    kwadrat.className="kwadraty"
+                    if(zdj2==1)
+                    {
+                        kwadrat.style.backgroundImage="url('img.png')"
+                    }else if (zdj2 == 2)
+                    {
+                        
+                         kwadrat.style.backgroundImage="url('img2.jpg')"
+                    }else
+                    {
+                         kwadrat.style.backgroundImage="url('img3.jpg')"
+                    }
+					
+					Tablica2.push(kwadrat);
+					
+                    kwadrat.style.backgroundPosition=((-k)*(300/n))+"px "+((-b)*(300/n))+"px"
+                  //  kwadrat.onclick=przesuwanie
+                    
+                
+               
+                    
+                     if(b==(n-1)&&k==(n-1)){
+                      //  console.log("działa")
+                        kwadrat.style.backgroundImage=""
+                       kwadrat.style.background="rgba(0,0,0,0.4)"
+						kwadrat.className="pusty"
+                        }  
+                   
+        
+                   
+                    }   
+					
+            }  
+       
+     //domyslnie 10 im wiecej tym wolniejsze losowanie   
+                          n=parseInt(n);
+                       
+            //   var y = Math.floor((Math.random() * n) + 1);
+                 var y;
+               
+                          var x = Tablica.indexOf(document.getElementById("d"+(n-1)+(n-1)));
+                 
+       var Varr = setTimeout(koko2,1000);
+
+            
+            function koko2()
+            {
+                var myVar = setInterval(fZegar, 40)
+                 var lol = clearInterval(pantofel);
+            }
+            
+           var pantofel = setInterval(koko, 100);
+            
+            
+            
+            //LOSOWANIE /////
+        
+        function koko(){
+            
+            for (var z=0;z<n*n*n;z++)
+                       {
+                          
+                       //  y = Math.floor((Math.random() * (n*n)) + 0);
+                         // console.log(y)
+                  
+          if(x%n==0 && x!=0 && x!=(n*n)-n){
+               Tablica3.splice(0,2);
+              Tablica3[0]=x+1
+              Tablica3[1]=x+n
+              Tablica3[2]=x-n
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+              y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+            
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	  
+	x=y;
+              
+               niecofaj=x;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+                  
+         
+     }else if(x>0 && x<n-1){
+             Tablica3.splice(0,3);
+              Tablica3[0]=x+1
+              Tablica3[1]=x+n
+              Tablica3[2]=x-1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+                  
+         
+     }else if(x>(n*n)-n && x<(n*n)-1){
+            
+   Tablica3.splice(0,3);
+         
+              Tablica3[0]=x+1
+              Tablica3[1]=x-n
+              Tablica3[2]=x-1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+                  
+         
+     }else if(x%n==(n-1) && x!=n-1 && x!=(n*n)-1){
+   
+  Tablica3.splice(0,3);
+         
+              Tablica3[0]=x+n // y=8
+              Tablica3[1]=x-n // y=2
+              Tablica3[2]=x-1 // y=4
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+         //y=4
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+        
+     }else if(x==0){
+   
+    Tablica3.splice(0,3);
+         
+              Tablica3[0]=x+n
+             
+              Tablica3[1]=x+1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+        
+     }else if(x==n-1){
+   
+    Tablica3.splice(0,3);
+         
+              Tablica3[0]=x+n
+             
+              Tablica3[1]=x-1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+        
+     }else if(x==(n*n)-n){
+   
+    Tablica3.splice(0,3);
+         
+              Tablica3[0]=x-n
+             
+              Tablica3[1]=x+1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+        
+     }else if(x==(n*n)-1){
+  
+    Tablica3.splice(0,3);
+         
+              Tablica3[0]=x-n
+             //y=5/y=7
+              Tablica3[1]=x-1
+              
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+         //np y=5
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+         //niecofaj = 8
+         console.log(niecofaj)
+         //  x=8
+        //   y=5
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+       //  x=5
+        // y = 5
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+        
+     }else
+        {
+           
+     Tablica3.splice(0,3);
+         
+              Tablica3[0]=x-n
+          
+              Tablica3[1]=x-1
+                 Tablica3[2]=x+n
+                 Tablica3[3]=x+1
+              
+             for(var i=0; i<Tablica3.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica3.length)
+                                var temp2 = Tablica3[i];
+                                Tablica3[i] = Tablica3[j];
+                                Tablica3[j] = temp2;
+                            }
+              
+               y = Tablica3[0];
+              if(y==niecofaj)
+              {
+                  y=Tablica3[1];
+              }
+              niecofaj=x;
+           
+    if (x > y) {
+		temp = Tablica[x];
+		Tablica[x] = Tablica[y];
+		Tablica[y] = temp;
+	} else {
+		temp = Tablica[y];
+		Tablica[y] = Tablica[x]
+		Tablica[x] = temp;
+	}
+	 
+	x=y;
+	pole.innerHTML = ""
+		
+		//var n = .id.charAt(2);
+			var zmienna = 0;
+		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+		zmienna++;
+	
+	 }
+            
+    }
+         
+            
+        }
+                      
+                                
+                            
+                   }
+        }
+            
+            
+       /*     //LOSOWANIE TABLICY//
+                     for(var i=0; i<Tablica.length;i++)
+                            {
+                                var j = Math.floor(Math.random() * Tablica.length)
+                                var temp2 = Tablica[i];
+                                Tablica[i] = Tablica[j];
+                                Tablica[j] = temp2;
+                            }
+                        
+                        
+                      
+                        var zmienna = 0;
+                        		for(b=0;b<n;b++){
+                    for(var k=0;k<n;k++){
+		  
+		document.getElementById("pole").appendChild(Tablica[zmienna])
+	
+		
+		zmienna++;
+	
+	 }
+            
+    }
+       */    
+   
+   
+        
+       
+     /////////////////////      
+     ////KONIEC LOSOWANIA
+     ///////////////////////////   
+       
+            if(a == 1)
+                {
+               Tablica2.splice(0,Tablica2.length-(n*n));
+                }
+           a=1;
+           
+        //  console.log(Tablica)
+        //  console.log(Tablica2)
+         
+        }
+       
+        function openNav() {
+            document.getElementById("myNav").style.height = "100%";
+            
+            
+    
+          
+            
+            
+        setTimeout(closeit,2000)
+            
+            zegg = 1;
+    
+}
+
+    function closeit()
+        {
+            document.getElementById("myNav").style.height = "0%"
+        }
+	 
+	</script>
+</head>
+
+<body>
+
+   
+</body>
+</html>
+
