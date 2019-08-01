@@ -1,0 +1,33 @@
+<DOCTYPE !html>
+<html>
+  <head>
+    <title>Tiny Flap</title>
+  </head>
+    <style>
+        #blad{
+            position: absolute;
+            left:880;
+            top:243;
+            width: 160;
+            height: 130;
+            background-color: rgb(35,131,146);
+            
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #game {
+            
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+  <body onload="(new TinyFlap()).create('game')">
+    <script type="text/javascript" src="main.js"></script>
+    <canvas id="game"></canvas>
+     
+  </body>
+</html>
